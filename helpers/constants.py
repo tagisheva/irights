@@ -27,13 +27,13 @@ headers = {
 }
 
 start_day=1
-today_day=28
-end_day=31
-month=10
+today_day=30
+end_day=30
+month=11
 year=2022
 
 today_datetime = datetime.datetime(year, month, today_day)
-start_datetime = datetime.datetime(year, 9, 30)
+start_datetime = datetime.datetime(year, month, start_day)
 end_datetime = datetime.datetime(year, month, end_day)
 
 #   "EIA_ORDERING_FLOW": {
