@@ -1,5 +1,7 @@
+from pickle import TRUE
 import requests
 import re
+from re import search
 from docxtpl import DocxTemplate, RichText
 
 from helpers.constants import headers, JIRA
@@ -10,9 +12,11 @@ def mapPullsIntoTableRows(idx_and_item):
     index, item = idx_and_item
     pull_url = item["pull_request"]["url"]
     pull_request = requests.get(pull_url, headers=headers)
-    split_branch_name = re.split("(-|\/)", pull_request.json()["head"]["ref"])
-    project_key = split_branch_name[2]
-    task_number = split_branch_name[4]
+    pull_ref = pull_request.json()["head"]["ref"]
+    isNotSyncPR = search("(-|\/)", pull_ref)
+    split_branch_name = re.split("(-|\/)", pull_ref)
+    project_key = split_branch_name[2] if isNotSyncPR else ""
+    task_number = split_branch_name[4] if isNotSyncPR else ""
     task_url = ""
     if task_number.isnumeric():
         task_url = JIRA + project_key + "-" + task_number
