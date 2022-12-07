@@ -4,7 +4,6 @@ from helpers.constants import COMPANY, MANAGER, EMPLOYEE, POSITION, today_dateti
 from helpers.map_to_table import mapPullsIntoTableRows, mapIssuesIntoTableRows, mapToTableData, tpl, addTableHeader
 from helpers.get_github_prs import pull_requests
 from helpers.get_github_issues import issues
-from docxtpl import RichText
 
 table_data_pulls = map(mapPullsIntoTableRows, pull_requests)
 

@@ -24,7 +24,6 @@ def mapPullsIntoTableRows(idx_and_item):
     index, item = idx_and_item
     pull_url = item["pull_request"]["url"]
     pull_request = requests.get(pull_url, headers=headers)
-
     branch_name = pull_request.json()["head"]["ref"]
     jira_data = getJiraTaskDataByBranchName(branch_name)
 
