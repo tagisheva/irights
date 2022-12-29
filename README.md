@@ -1,13 +1,11 @@
 1. Init:
-    Update example.secrets.py with relevant data and rename to secrets.py;
-    Launch `pip install -r requirements.txt` or `python -m pip install -r requirements.txt --trusted-host=pypi.python.org --trusted-host=pypi.org --trusted-host=files.pythonhosted.org` command in terminal;
-2. Apply `python create_ipreport_docx.py` to generate ip report in .docx fromat;
-3. Check the doc file
-4. Apply `python convert_to_pdf.py`
+    Add .env file in root folder with data described in example.env
+    Launch `pip install -r requirements.txt` command in terminal;
+2. Launch `python ui.py` and follow the instructions;
 
 python 3.10.5
 pip 22.0.4
 
-todo int confluence, miro
+todo int confluence, miro, co-author logic, user input validation
 
 

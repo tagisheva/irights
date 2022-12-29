@@ -1,38 +1,37 @@
-from pickle import TRUE
-import requests
 import re
-from re import search
 from docxtpl import DocxTemplate, RichText
 
-from helpers.constants import headers, JIRA, header_column_1, header_column_2, header_column_3, header_column_4
+import constants
+import api.get_github_prs as prs
 
 tpl=DocxTemplate("./files/template.docx")
 
-def addTableHeader():
-    return {"n": header_column_1, "cols": [RichText(header_column_2), RichText(header_column_3), RichText(header_column_4)]}
-
-def getJiraTaskDataByBranchName(branch_name):
-    hasStandartName = search("(-|\/)", branch_name)
+def __getJiraTaskDataByBranchName(branch_name):
+    hasStandartName = re.search("(-|\/)", branch_name)
     split_branch_name = re.split("(-|\/)", branch_name)
+    hasStandartLength = len(split_branch_name) > 4
 
     return {
-        "jira_project_key": split_branch_name[2] if hasStandartName else "",
-        "jira_task_number": split_branch_name[4] if hasStandartName else ""
+        "jira_project_key": split_branch_name[2] if hasStandartName and hasStandartLength else "",
+        "jira_task_number": split_branch_name[4] if hasStandartName and hasStandartLength else ""
     }
+
+def addTableHeader():
+    return {"n": constants.COL_TITLE_1, "cols": [RichText(constants.COL_TITLE_2), RichText(constants.COL_TITLE_3), RichText(constants.COL_TITLE_4)]}
 
 def mapPullsIntoTableRows(idx_and_item):
     index, item = idx_and_item
-    pull_url = item["pull_request"]["url"]
-    pull_request = requests.get(pull_url, headers=headers)
+    url = item["pull_request"]["url"]
+    pull_request = prs.getPRByUrl(url)
     branch_name = pull_request.json()["head"]["ref"]
-    jira_data = getJiraTaskDataByBranchName(branch_name)
+    jira_data = __getJiraTaskDataByBranchName(branch_name)
 
     jira_project_key = jira_data["jira_project_key"]
     jira_task_number = jira_data["jira_task_number"]
 
     jira_task_url = ""
     if jira_task_number.isnumeric():
-        jira_task_url = JIRA + jira_project_key + "-" + jira_task_number
+        jira_task_url = constants.JIRA + jira_project_key + "-" + jira_task_number
 
     work_description_cell = RichText('')
 
