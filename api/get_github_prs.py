@@ -1,5 +1,5 @@
 import requests
-import constants
+import constants_upd as constants
 from re import search
 
 _EXCLUDE_SYNC = "SYNC"

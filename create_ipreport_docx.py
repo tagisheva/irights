@@ -1,4 +1,4 @@
-import constants
+import constants_upd as constants
 import helpers.map_to_table as helper
 import api.get_github_prs as prs
 import api.get_github_issues as issues

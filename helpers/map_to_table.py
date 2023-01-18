@@ -1,7 +1,7 @@
 import re
 from docxtpl import DocxTemplate, RichText
 
-import constants
+import constants_upd as constants
 import api.get_github_prs as prs
 
 tpl=DocxTemplate("./files/template.docx")

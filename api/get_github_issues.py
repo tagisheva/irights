@@ -1,5 +1,5 @@
 import requests
-import constants
+import constants_upd as constants
 
 def getIssuesByDate(start_datetime, end_datetime):
     _start_filter = start_datetime.strftime("%Y-%m-%d")

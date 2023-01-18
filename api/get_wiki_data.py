@@ -1,6 +1,6 @@
 import requests
 
-import constants
+import constants_upd as constants
 
 # from common list api I cannot get any data valuable for template, 
 # looks like the viki itself uses cgraphql requests, 
