@@ -11,14 +11,14 @@ COL_TITLE_3="Co-author"
 COL_TITLE_4="Work location"
 ACCEPT="application/vnd.github+json"
 
-WIKI_URL=os.getenv('WIKI_URL')
+# WIKI_URL=os.getenv('WIKI_URL')
 JIRA=os.getenv('JIRA')
 
 USERNAME=os.getenv('USERNAME')
 PASSWORD=os.getenv('PASSWORD')
 TOKEN=os.getenv('TOKEN')
-WIKI_TOKEN=os.getenv('WIKI_TOKEN')
-WIKI_BASE_TOKEN=os.getenv('WIKI_BASE_TOKEN')
+# WIKI_TOKEN=os.getenv('WIKI_TOKEN')
+# WIKI_BASE_TOKEN=os.getenv('WIKI_BASE_TOKEN')
 MANAGER=os.getenv('MANAGER')
 EMPLOYEE=os.getenv('EMPLOYEE')
 POSITION=os.getenv('POSITION')
@@ -29,7 +29,7 @@ HEADERS = {
     "Accept": ACCEPT
 }
 
-WIKI_HEADERS = {
-    "Authorization": "Basic " + WIKI_BASE_TOKEN,
-    "Content-Type": "application/json"
-}
+# WIKI_HEADERS = {
+#     "Authorization": "Basic " + WIKI_BASE_TOKEN,
+#     "Content-Type": "application/json"
+# }
